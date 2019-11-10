@@ -69,7 +69,7 @@ try:
 			file = open(today+"/"+name+'.csv','w') # w untuk write/mengganti data sebelumnya (menjadi terhapus sebelumnya)
 		                                # a untuk menambah data tanpa menghapus data sebelumnya
 			writer = csv.writer(file)
-			writer.writerow(['Nama Barang', 'Item ID','Shop ID', 'Harga'])
+			writer.writerow(['Nama Barang', 'Item ID','Shop ID','Terjual', 'Harga'])
 		img = input(' Save images ?(y/n) : ')
 		time(4)
 		if img == 'y' or img == 'Y':
@@ -86,6 +86,8 @@ try:
 			print(Fore.GREEN + "[+] " +Fore.YELLOW + info['name'])
 			print(Fore.GREEN + "[+]" +Fore.YELLOW+" ItemID : "+itemid)
 			print(Fore.GREEN + "[+]" +Fore.YELLOW+" ShopID : "+shopid)
+			print(Fore.GREEN + "[+]" +Fore.YELLOW+" Sold   :",info['historical_sold'],"sold")
+			print(Fore.GREEN + "[+] " +Fore.YELLOW+"Rp", str(info['price_max'])[0:-5])
 			if img == 'y' or img == 'Y':
 				if not os.path.exists(today +"/"+str(item['itemid'])):
 					folder = os.makedirs(today+"/"+str(item['itemid']))
@@ -100,7 +102,7 @@ try:
 					time(1)
 			print("\n")
 			if save == 'y' or save == 'Y':
-				writer.writerow([info['name'], info['itemid'], info['shopid'],str(info['price_max'])[0:-5]])
+				writer.writerow([info['name'], info['itemid'], info['shopid'],str(info['historical_sold']),str(info['price_max'])[0:-5]])
 			time(1.7)
 		if save == 'y' or save == 'Y':
 			file.close()
@@ -138,7 +140,7 @@ try:
 				file = open(today+"/"+name+'.csv','w') # w untuk write/mengganti data sebelumnya (menjadi terhapus sebelumnya)
 			                                # a untuk menambah data tanpa menghapus data sebelumnya
 				writer = csv.writer(file)
-				writer.writerow(['Nama Barang', 'Item ID','Shop ID', 'Harga'])
+				writer.writerow(['Nama Barang', 'Item ID','Shop ID','Terjual', 'Harga'])
 			img = input(' Save images ?(y/n) : ')
 			for item in items:
 				itemid = str(item['itemid'])
@@ -150,6 +152,7 @@ try:
 				print(Fore.GREEN + "[+] " +Fore.YELLOW + info['name'])
 				print(Fore.GREEN + "[+]" +Fore.YELLOW+" ItemID : "+itemid)
 				print(Fore.GREEN + "[+]" +Fore.YELLOW+" ShopID : "+shopid)
+				print(Fore.GREEN + "[+]" +Fore.YELLOW+" Sold   :",info['historical_sold'],"sold")
 				print(Fore.GREEN + "[+] " +Fore.YELLOW+"Rp", str(info['price_max'])[0:-5])
 				if img == 'y' or img == 'Y':
 					if not os.path.exists(today +"/"+str(item['itemid'])):
@@ -165,10 +168,11 @@ try:
 						time(1)
 				print("\n")
 				if save == 'y' or save == 'Y':
-					writer.writerow([info['name'], info['itemid'], info['shopid'],str(info['price_max'])[0:-5]])
+					writer.writerow([info['name'], info['itemid'], info['shopid'],str(info['historical_sold']),str(info['price_max'])[0:-5]])
 				time(1.7)
 			if save == 'y' or save == 'Y':
 				file.close()
+		print(' Done!')
 	else:
 		print('Something Wrong...')
 except:
