@@ -3,14 +3,17 @@ Shopee Scraping Tool
 
 Packages needed
 - requests
-- BeautifulSoup (bs4)
-- json
-- csv
-- colorama(optional)
+- bs4
+- colorama
+
+Installing PIP on Windows:
+- [Download PIP](https://bootstrap.pypa.io/get-pip.py)
+- python get-pip.py
 
 Installing Package:
-- python install pip
-- pip install (packagename)
+- pip3 install requests  or pip install requests
+- pip3 install bs4  or pip install bs4
+- pip3 install colorama  or pip install colorama
 
 How to use :
-- python supi.py
+- python supi.py or python3 supi.py
